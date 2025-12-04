@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Github, Linkedin, Mail, ChevronDown, Download } from "lucide-react";
+import { Github, Linkedin, Mail, ChevronDown } from "lucide-react";
 
 export const Hero = () => {
   return (
@@ -54,12 +54,6 @@ export const Hero = () => {
           <div className="flex flex-wrap gap-4 mb-12 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
             <Button variant="hero" size="lg" asChild>
               <a href="#projects">View My Work</a>
-            </Button>
-            <Button variant="outline" size="lg" asChild>
-              <a href="/Laxman_Shrestha_CV.docx" download>
-                <Download className="w-4 h-4 mr-2" />
-                Download CV
-              </a>
             </Button>
             <Button variant="outline" size="lg" asChild>
               <a href="#contact">
