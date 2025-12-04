@@ -60,7 +60,7 @@ export const About = () => {
                 </div>
                 <div className="space-y-4">
                   <div>
-                    <p className="text-foreground font-medium">B.Sc. Computer Science</p>
+                    <p className="text-foreground font-medium">B.Sc. Information Technology</p>
                     <p className="text-sm text-muted-foreground">LBEF (APU Affiliated)</p>
                     <p className="text-xs text-primary font-mono mt-1">2025</p>
                   </div>
