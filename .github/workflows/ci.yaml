@@ -52,7 +52,7 @@ jobs:
       
       - name: "Deploy to Server"
         run: |          
-          ssh -t ubuntu@$SERVER_IP -i mykey.pem << EOF
+          ssh ubuntu@$SERVER_IP -i mykey.pem << EOF
           cd "${EC2_APP_DIR}"
           
           git fetch --all
