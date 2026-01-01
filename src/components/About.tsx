@@ -11,7 +11,7 @@ export const About = () => {
             <h2 className="text-3xl md:text-4xl font-bold">About Me</h2>
             <div className="flex-1 h-px bg-border ml-4" />
           </div>
-
+                                             
           <div className="grid md:grid-cols-3 gap-8 mt-12">
             {/* Main content */}
             <div className="md:col-span-2 space-y-6">

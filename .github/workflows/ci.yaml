@@ -21,3 +21,42 @@ jobs:
       - name: test build
         working-directory: .
         run: docker build -t portfolio-image .
+
+  deploy:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    env:
+      SERVER_IP: ${{ secrets.SERVER_IP }}
+      EC2_APP_DIR: ${{ secrets.EC2_APP_DIR }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: "Configure SSH"
+        run: |
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+          cat ~/.ssh/config
+          touch ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
+
+      - name: "Add SSH Key Access"
+        run: |
+          touch mykey.pem
+          echo $SSH_KEY64 | base64 -d > mykey.pem
+          chmod 600 mykey.pem
+          ssh-keygen -R $SERVER_IP
+        env:
+           SSH_KEY64: ${{ secrets.SSH_KEY64 }}
+      
+      - name: "Deploy to Server"
+        run: |          
+          ssh -t ubuntu@$SERVER_IP -i mykey.pem << EOF
+          cd "${EC2_APP_DIR}"
+          
+          git fetch --all
+
+          docker compose up -d --build
+
+          EOF
