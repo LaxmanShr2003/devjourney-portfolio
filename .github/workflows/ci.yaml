@@ -52,9 +52,8 @@ jobs:
       
       - name: "Deploy to Server"
         run: |          
-          ssh -o StrictHostKeyChecking=no -t ubuntu@$SERVER_IP -i mykey.pem << EOF
-          mkdir -p "${EC2_APP_DIR}"
-          cd "${EC2_APP_DIR}"
+          ssh -i mykey.pem ubuntu@$SERVER_IP << EOF
+         
           
           git fetch --all
 
