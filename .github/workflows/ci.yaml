@@ -19,5 +19,5 @@ jobs:
         run: npm ci
 
       - name: test build
-        working-directory: ./dockerDeploy
+        working-directory: .
         run: docker build -d -t portfolio-image .
