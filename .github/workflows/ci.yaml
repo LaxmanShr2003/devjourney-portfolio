@@ -20,4 +20,4 @@ jobs:
 
       - name: test build
         working-directory: .
-        run: docker build -d -t portfolio-image .
+        run: docker build -t portfolio-image .
